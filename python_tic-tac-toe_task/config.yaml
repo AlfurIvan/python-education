@@ -1,0 +1,57 @@
+version: 1
+disable_existing_loggers: False
+formatters:
+  simple:
+    format: '[%(asctime)s] %(message)s'
+
+handlers:
+  console:
+    class: logging.StreamHandler
+    level: WARNING
+    formatter: simple
+    stream: ext://sys.stdout
+
+  file_handler:
+    class: logging.FileHandler
+    level: DEBUG
+    formatter: simple
+    filename: /tmp/ttt.txt
+
+root:
+  level: ERROR
+  handlers: [console, file_handler]
+
+loggers:
+  server:
+    level: INFO
+    handlers: [file_handler]
+    propagate: no
+
+#version: 1
+#formatters:
+#  simple:
+#    format: '[%(asctime)s] %(message)s'
+#handlers:
+#  file_handler:
+#    class: logging.handlers.RotatingFileHandler
+#    level: WARNING
+#    formatter: simple
+#    filename: /tmp/ttt.txt
+#
+#  console:
+#    class: logging.StreamHandler
+#    level: INFO
+#    formatter: simple
+#    stream: ext://sys.stdout
+#
+#root:
+#  level: WARNING
+#  handlers: [console,file_handler]
+#  propagate: yes
+#
+#loggers:
+#  sampleLogger:
+#    level: WARNING
+#    handlers: [console, file_handler]
+#    propagate: yes
+#
